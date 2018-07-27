@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="RenderTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fFX-4I-I1I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEo-Yb-DoH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VEo-Yb-DoH" firstAttribute="centerY" secondItem="fFX-4I-I1I" secondAttribute="centerY" id="ESO-Go-ISy"/>
+                            <constraint firstItem="VEo-Yb-DoH" firstAttribute="leading" secondItem="fFX-4I-I1I" secondAttribute="leading" id="PvH-tL-bPW"/>
+                            <constraint firstItem="VEo-Yb-DoH" firstAttribute="bottom" secondItem="If4-7N-8Hx" secondAttribute="bottom" id="c9y-xT-3M9"/>
+                            <constraint firstItem="VEo-Yb-DoH" firstAttribute="centerX" secondItem="fFX-4I-I1I" secondAttribute="centerX" id="oMK-O0-aiD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="If4-7N-8Hx"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="VEo-Yb-DoH" id="B1z-0x-9u8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>
