@@ -33,55 +33,51 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        add3dAnimation(fileName: "wolf")
-//        add3dObject(fileName: "snake")
-    }
-    
-    //you should put filename without .dae and path
-    func add3dAnimation(fileName: String){
+
         
+        let fileName = "fixedHipHop"
+        
+        //animationIdentifier is automatically being "filename-1", "filename-2"... like this.
+        //So you should input correct identifier to trigger exact animation you want.
         let pathAndNameAndType = "art.scnassets/"+fileName+".dae"
         let pathAndName = "art.scnassets/"+fileName
         let animationIdentifier = fileName + "-1"
         
-        let objectScene = SCNScene(named: pathAndNameAndType)!
-      
-        let objectNode = SCNNode()
-
-        for child in objectScene.rootNode.childNodes{
-            objectNode.addChildNode(child)
-        }
-
-        objectNode.scale = SCNVector3(1, 1, 1)
-        objectNode.position = SCNVector3(x: 0, y: -1, z: -2)
+        let sambaNode = addAnimatedNode(fileName: pathAndNameAndType, scale: 0.005)
+        sambaNode.position = SCNVector3(x: 0, y: -1, z: -2)
         
+        sceneView.scene.rootNode.addChildNode(sambaNode)
+        loadAnimation(withKey: "sambaAni", sceneName: pathAndName, animationIdentifier: animationIdentifier)
         
-        sceneView.scene.rootNode.addChildNode(objectNode)
-        
-        loadAnimation(withKey: "animation1", sceneName: pathAndName, animationIdentifier: animationIdentifier)
-
+//        add3dObject(fileName: "snake")
     }
     
-    func add3dObject(fileName : String){
-        
-        let pathAndNameAndType = "art.scnassets/"+fileName+".dae"
-        
-        let objectScene = SCNScene(named: pathAndNameAndType)!
+
+    
+    
+    //this function returns 3d object node but you should use "load animation" function later to trigger the animation.
+    //input file name and certain scale value you want.
+    func addAnimatedNode(fileName: String, scale: Float)-> SCNNode {
         
         let objectNode = SCNNode()
         
+        guard let objectScene = SCNScene(named: fileName) else{
+            print("no file. ")
+            return objectNode
+        }
+        
         for child in objectScene.rootNode.childNodes{
             objectNode.addChildNode(child)
         }
-
-        objectNode.scale = SCNVector3(0.001, 0.001, 0.001)
-        objectNode.position = SCNVector3(x: 0, y: -1, z: -80)
         
+        objectNode.scale = SCNVector3(scale, scale, scale)
         
-        sceneView.scene.rootNode.addChildNode(objectNode)
+        return objectNode
         
     }
     
+    
+    //this is  function to trigger animation. you can choose the animation you want by animaitonIdentifier
     func loadAnimation(withKey: String, sceneName : String, animationIdentifier: String){
         
         guard let sceneURL = Bundle.main.url(forResource: sceneName, withExtension: "dae") else{
@@ -104,36 +100,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             animations[withKey] = animationObject
         }
     }
+
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        let location = touches.first!.location(in: sceneView)
-//
-//        // Let's test if a 3D Object was touch
-//        var hitTestOptions = [SCNHitTestOption: Any]()
-//        hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
-//
-//        let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
-//
-//        if hitResults.first != nil {
-//            if(idle) {
-//                playAnimation(key: "animation1")
-//            } else {
-//                stopAnimation(key: "animation1")
-//            }
-//            idle = !idle
-//            return
-//        }
-//    }
-//
-//    func playAnimation(key: String) {
-//        // Add the animation to start playing it right away
-//        sceneView.scene.rootNode.addAnimation(animations[key]!, forKey: key)
-//    }
-//
-//    func stopAnimation(key: String) {
-//        // Stop the animation with a smooth transition
-//        sceneView.scene.rootNode.removeAnimation(forKey: key, blendOutDuration: CGFloat(0.5))
-//    }
+    func add3dObject(fileName : String){
+        
+        let pathAndNameAndType = "art.scnassets/"+fileName+".dae"
+        
+        let objectScene = SCNScene(named: pathAndNameAndType)!
+        
+        let objectNode = SCNNode()
+        
+        for child in objectScene.rootNode.childNodes{
+            objectNode.addChildNode(child)
+        }
+
+        objectNode.scale = SCNVector3(0.001, 0.001, 0.001)
+        objectNode.position = SCNVector3(x: 0, y: -1, z: -80)
+        
+        
+        sceneView.scene.rootNode.addChildNode(objectNode)
+        
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
