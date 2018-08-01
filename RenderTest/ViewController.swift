@@ -33,6 +33,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
+//        //to make realistic light, turn off the default light.
+//        sceneView.automaticallyUpdatesLighting = true
 
         
         let fileName = "fixedHipHop"
@@ -43,65 +45,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let pathAndName = "art.scnassets/"+fileName
         let animationIdentifier = fileName + "-1"
         
-        let sambaNode = addAnimatedNode(fileName: pathAndNameAndType, scale: 0.005)
+        let sambaNode = AniModel(fileName: pathAndNameAndType, scale: 0.005)
+        sambaNode.loadAnimation(withKey: "sambaAni", sceneName: pathAndName, animationIdentifier: animationIdentifier)
+    
         sambaNode.position = SCNVector3(x: 0, y: -1, z: -2)
         
         sceneView.scene.rootNode.addChildNode(sambaNode)
-        loadAnimation(withKey: "sambaAni", sceneName: pathAndName, animationIdentifier: animationIdentifier)
+        
+        sambaNode.playAnimation(key: "sambaAni")
+
         
 //        add3dObject(fileName: "snake")
     }
     
 
-    
-    
-    //this function returns 3d object node but you should use "load animation" function later to trigger the animation.
-    //input file name and certain scale value you want.
-    func addAnimatedNode(fileName: String, scale: Float)-> SCNNode {
-        
-        let objectNode = SCNNode()
-        
-        guard let objectScene = SCNScene(named: fileName) else{
-            print("no file. ")
-            return objectNode
-        }
-        
-        for child in objectScene.rootNode.childNodes{
-            objectNode.addChildNode(child)
-        }
-        
-        objectNode.scale = SCNVector3(scale, scale, scale)
-        
-        return objectNode
-        
-    }
-    
-    
-    //this is  function to trigger animation. you can choose the animation you want by animaitonIdentifier
-    func loadAnimation(withKey: String, sceneName : String, animationIdentifier: String){
-        
-        guard let sceneURL = Bundle.main.url(forResource: sceneName, withExtension: "dae") else{
-            print("no file")
-            return
-        }
-        let sceneSource = SCNSceneSource(url: sceneURL, options: nil)
-        
-        
-        if let animationObject = sceneSource?.entryWithIdentifier(animationIdentifier, withClass: CAAnimation.self) {
-            
-            animationObject.usesSceneTimeBase = false
-            animationObject.repeatCount = 1
-            // To create smooth transitions between animations
-            animationObject.fadeInDuration = CGFloat(1)
-            animationObject.fadeOutDuration = CGFloat(0.5)
-            
-            
-            // Store the animation for later use
-            animations[withKey] = animationObject
-        }
-    }
-
-    
     func add3dObject(fileName : String){
         
         let pathAndNameAndType = "art.scnassets/"+fileName+".dae"

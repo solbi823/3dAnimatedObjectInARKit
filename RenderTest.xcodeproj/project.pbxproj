@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF816FE921123C980047E900 /* 3dAnimatedObjectClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF816FE821123C980047E900 /* 3dAnimatedObjectClass.swift */; };
 		FFF7BE032107CC55008A3070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF7BE022107CC55008A3070 /* AppDelegate.swift */; };
 		FFF7BE052107CC55008A3070 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF7BE042107CC55008A3070 /* art.scnassets */; };
 		FFF7BE072107CC55008A3070 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF7BE062107CC55008A3070 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF816FE821123C980047E900 /* 3dAnimatedObjectClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3dAnimatedObjectClass.swift; sourceTree = "<group>"; };
 		FFF7BDFF2107CC55008A3070 /* RenderTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenderTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF7BE022107CC55008A3070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF7BE042107CC55008A3070 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				FFF7BE022107CC55008A3070 /* AppDelegate.swift */,
 				FFF7BE042107CC55008A3070 /* art.scnassets */,
 				FFF7BE062107CC55008A3070 /* ViewController.swift */,
+				FF816FE821123C980047E900 /* 3dAnimatedObjectClass.swift */,
 				FFF7BE082107CC55008A3070 /* Main.storyboard */,
 				FFF7BE0B2107CC56008A3070 /* Assets.xcassets */,
 				FFF7BE0D2107CC56008A3070 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				FFF7BE072107CC55008A3070 /* ViewController.swift in Sources */,
 				FFF7BE032107CC55008A3070 /* AppDelegate.swift in Sources */,
+				FF816FE921123C980047E900 /* 3dAnimatedObjectClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
