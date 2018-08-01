@@ -18,7 +18,7 @@ class AniModel : SCNNode {
     var fileName : String?
     
     var animations = [String : CAAnimation]()
-    var idle : Bool = true
+    var idle : Bool = false
 
     //input file name and certain scale value you want.
     init(fileName: String, scale: Float) {
@@ -79,11 +79,13 @@ class AniModel : SCNNode {
     func playAnimation(key: String) {
         // Add the animation to start playing it right away
         self.addAnimation(animations[key]!, forKey: key)
+        self.idle = true
     }
     
     func stopAnimation(key: String) {
         // Stop the animation with a smooth transition
         self.removeAnimation(forKey: key, blendOutDuration: CGFloat(0.5))
+        self.idle = false
     }
     
     

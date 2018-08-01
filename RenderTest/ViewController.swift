@@ -45,17 +45,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let pathAndName = "art.scnassets/"+fileName
         let animationIdentifier = fileName + "-1"
         
-        let sambaNode = AniModel(fileName: pathAndNameAndType, scale: 0.005)
+        let sambaNode = AniModel(fileName: pathAndNameAndType, scale: 0.003)
         sambaNode.loadAnimation(withKey: "sambaAni", sceneName: pathAndName, animationIdentifier: animationIdentifier)
     
-        sambaNode.position = SCNVector3(x: 0, y: -1, z: -2)
+        sambaNode.position = SCNVector3(x: 0, y: -1, z: -1)
         
         sceneView.scene.rootNode.addChildNode(sambaNode)
         
         sambaNode.playAnimation(key: "sambaAni")
+        //sambaNode.stopAnimation(key: "sambaAni")
 
-        
-//        add3dObject(fileName: "snake")
+
     }
     
 
